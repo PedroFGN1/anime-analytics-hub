@@ -44,4 +44,3 @@ CREATE TABLE IF NOT EXISTS metrics_history (
 CREATE INDEX idx_animes_mal_id ON animes(mal_id);
 CREATE INDEX idx_metrics_anime_id ON metrics_history(anime_id);
 CREATE INDEX idx_metrics_date ON metrics_history(collected_at);
-```

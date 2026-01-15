@@ -15,6 +15,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data # Volume para persistir dados se desligar o container
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Script para criar tabelas no arranque
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@localhost.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 5050:5050
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
 
 volumes:
   postgres_data:
+  pgadmin_data:
+
+networks:
+  default:
+    name: local-network
+    external: true
