@@ -173,7 +173,7 @@ if __name__ == "__main__":
     
     # 2. Transformar
     df_animes, df_metrics = transform_data(raw_data)
-    
+    print(df_animes.head())
     # 3. Carregar
     load_data(df_animes, df_metrics)
     

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Serviço de Banco de Dados
   db:
@@ -11,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432" # Porta Externa : Porta Interna
+      - "${DB_PORT}:5432" # Porta Externa : Porta Interna
     volumes:
       - postgres_data:/var/lib/postgresql/data # Volume para persistir dados se desligar o container
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Script para criar tabelas no arranque
